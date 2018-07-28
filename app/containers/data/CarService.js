@@ -1,7 +1,6 @@
 import axios from 'axios';
 
-//testing bray
-// wowo github
+// hapus komen ga penting
 export class CarService {
 
   getCarsSmall() {
