@@ -29,8 +29,7 @@ import {
   actGetCarsList,
 } from './actions';
 
-// sikat miring lagi.
-// jgn brow
+// 20.00 
 export class Users extends React.Component { // eslint-disable-line react/prefer-stateless-function
   
   componentDidMount() {
