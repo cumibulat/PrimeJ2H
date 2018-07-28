@@ -28,6 +28,7 @@ export class Users extends React.Component { // eslint-disable-line react/prefer
           <meta name="description" content="Description of Users" />
         </Helmet>
         <FormattedMessage {...messages.header} />
+        Test dl guys
       </div>
     );
   }
