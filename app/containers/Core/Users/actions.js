@@ -5,11 +5,12 @@
  */
 
 import {
-  DEFAULT_ACTION,
+  SAGA_GET_CARS_LIST,
 } from './constants';
 
-export function defaultAction() {
+export function actGetCarsList(action) {
   return {
-    type: DEFAULT_ACTION,
+    type: SAGA_GET_CARS_LIST,
+    data: action,
   };
 }

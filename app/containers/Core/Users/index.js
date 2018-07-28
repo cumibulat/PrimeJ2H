@@ -14,12 +14,28 @@ import { compose } from 'redux';
 
 import injectSaga from 'utils/injectSaga';
 import injectReducer from 'utils/injectReducer';
-import makeSelectUsers from './selectors';
+
+import { DataTable } from 'primereact/components/datatable/DataTable';
+import { Column } from 'primereact/components/column/Column';
+
 import reducer from './reducer';
 import saga from './saga';
 import messages from './messages';
 
+import {
+  makeSelectCarsList,
+} from './selectors';
+import {
+  actGetCarsList,
+} from './actions';
+
+
 export class Users extends React.Component { // eslint-disable-line react/prefer-stateless-function
+  
+  componentDidMount() {
+    this.props.doGetCarsList();
+  }
+  
   render() {
     return (
       <div>
@@ -28,7 +44,20 @@ export class Users extends React.Component { // eslint-disable-line react/prefer
           <meta name="description" content="Description of Users" />
         </Helmet>
         <FormattedMessage {...messages.header} />
-        Test dl guys
+        <div className="content-section implementation">
+          <DataTable
+            value={this.props.carsList}
+            paginator
+            // paginatorLeft={paginatorLeft} paginatorRight={paginatorRight}
+            rows={10}
+            rowsPerPageOptions={[5, 10, 20]}
+          >
+            <Column field="vin" header="Vin" />
+            <Column field="year" header="Year" />
+            <Column field="brand" header="Brand" />
+            <Column field="color" header="Color" />
+          </DataTable>
+        </div>
       </div>
     );
   }
@@ -39,12 +68,12 @@ Users.propTypes = {
 };
 
 const mapStateToProps = createStructuredSelector({
-  users: makeSelectUsers(),
+  carsList: makeSelectCarsList(),
 });
 
 function mapDispatchToProps(dispatch) {
   return {
-    dispatch,
+    doGetCarsList: (e) => dispatch(actGetCarsList(e)),
   };
 }
 

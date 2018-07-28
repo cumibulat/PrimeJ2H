@@ -6,15 +6,17 @@
 
 import { fromJS } from 'immutable';
 import {
-  DEFAULT_ACTION,
+  REDUCER_GET_CARS_LIST,
 } from './constants';
 
-const initialState = fromJS({});
+const initialState = fromJS({
+  carsListReducer: [],
+});
 
 function usersReducer(state = initialState, action) {
   switch (action.type) {
-    case DEFAULT_ACTION:
-      return state;
+    case REDUCER_GET_CARS_LIST:
+      return state.set('carsListReducer', action.payload);
     default:
       return state;
   }

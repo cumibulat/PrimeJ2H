@@ -19,7 +19,13 @@ const makeSelectUsers = () => createSelector(
   (substate) => substate.toJS()
 );
 
+const makeSelectCarsList = () => createSelector(
+  selectUsersDomain,
+  (substate) => substate.get('carsListReducer')
+);
+
 export default makeSelectUsers;
 export {
   selectUsersDomain,
+  makeSelectCarsList,
 };
