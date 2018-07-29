@@ -14,6 +14,10 @@
 import React from 'react';
 import { Switch, Route } from 'react-router-dom';
 
+import 'primereact/resources/primereact.min.css';
+import 'primereact/resources/themes/start/theme.css';
+import 'font-awesome/css/font-awesome.css';
+
 import HomePage from 'containers/HomePage/Loadable';
 import NotFoundPage from 'containers/NotFoundPage/Loadable';
 import UserPage from 'containers/Core/Users/Loadable';
