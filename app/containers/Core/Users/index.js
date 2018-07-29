@@ -29,11 +29,48 @@ import {
   actGetCarsList,
 } from './actions';
 
-// 20.00 
 export class Users extends React.Component { // eslint-disable-line react/prefer-stateless-function
   
+
+  constructor(props) {
+    super(props);
+
+    this.state = {
+      page: 0,
+      loading: false,
+    };
+
+    this.onPage = this.onPage.bind(this);
+  }
+
   componentDidMount() {
     this.props.doGetCarsList();
+  }
+
+  onPage(event) {
+    this.setState({
+        loading: true
+    });
+
+    console.log('cek event :: ', event)
+
+    // //imitate delay of a backend call
+    // setTimeout(() => {
+    //   const startIndex = event.first;
+    //   const endIndex = event.first + this.state.rows;
+
+
+    //   const param = {
+    //     page: pageIndex + 1,
+    //     pageSize: 10,
+    //   };
+
+    //   this.setState({
+    //       first: startIndex,
+    //       cars: this.datasource.slice(startIndex, endIndex),
+    //       loading: false
+    //   });
+    // }, 250);
   }
   
   render() {
@@ -48,14 +85,17 @@ export class Users extends React.Component { // eslint-disable-line react/prefer
           <DataTable
             value={this.props.carsList}
             paginator
-            // paginatorLeft={paginatorLeft} paginatorRight={paginatorRight}
             rows={10}
             rowsPerPageOptions={[5, 10, 20]}
+            lazy
+            totalRecords={35}
+            onPage={this.onPage}
+            loading={this.state.loading}
           >
-            <Column field="vin" header="Vin" />
-            <Column field="year" header="Year" />
-            <Column field="brand" header="Brand" />
-            <Column field="color" header="Color" />
+            <Column field="vin" header="Vin" sortable />
+            <Column field="year" header="Year" sortable />
+            <Column field="brand" header="Brand" sortable />
+            <Column field="color" header="Color" sortable />
           </DataTable>
         </div>
       </div>
@@ -64,7 +104,7 @@ export class Users extends React.Component { // eslint-disable-line react/prefer
 }
 
 Users.propTypes = {
-  dispatch: PropTypes.func.isRequired,
+  // dispatch: PropTypes.func.isRequired,
 };
 
 const mapStateToProps = createStructuredSelector({

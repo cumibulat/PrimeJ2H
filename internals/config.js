@@ -28,6 +28,9 @@ const ReactBoilerplate = {
         'ip',
         'minimist',
         'sanitize.css',
+        'primereact',
+        'primeicons',
+        'font-awesome',
       ],
 
       /**
