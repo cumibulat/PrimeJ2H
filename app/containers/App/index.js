@@ -20,7 +20,7 @@ import 'font-awesome/css/font-awesome.css';
 
 import HomePage from 'containers/HomePage/Loadable';
 import NotFoundPage from 'containers/NotFoundPage/Loadable';
-import UserPage from 'containers/Core/Users/Loadable';
+import { UserPage, EditUserPage }  from 'containers/Core/Users/Loadable';
 
 export default function App() {
   return (
@@ -28,6 +28,7 @@ export default function App() {
       <Switch>
         <Route exact path="/" component={HomePage} />
         <Route exact path="/User" component={UserPage} />
+        <Route exact path="/EditUser" component={EditUserPage} />
         <Route component={NotFoundPage} />
       </Switch>
     </div>

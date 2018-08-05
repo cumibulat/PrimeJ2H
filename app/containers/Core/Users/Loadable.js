@@ -6,7 +6,12 @@
 
 import Loadable from 'react-loadable';
 
-export default Loadable({
+export const UserPage = Loadable({
   loader: () => import('./index'),
+  loading: () => null,
+});
+
+export const EditUserPage = Loadable({
+  loader: () => import('./editUser'),
   loading: () => null,
 });

@@ -44,7 +44,11 @@ export class Users extends React.Component { // eslint-disable-line react/prefer
   }
 
   componentDidMount() {
-    this.props.doGetCarsList();
+    const param = {
+      page: 1,
+      pageSize: 10,
+    };
+    this.props.doGetCarsList(param);
   }
 
   onPage(event) {
@@ -60,10 +64,12 @@ export class Users extends React.Component { // eslint-disable-line react/prefer
     //   const endIndex = event.first + this.state.rows;
 
 
-    //   const param = {
-    //     page: pageIndex + 1,
-    //     pageSize: 10,
-    //   };
+      const param = {
+        page: event.page + 1,
+        pageSize: 10,
+      };
+
+      this.props.doGetCarsList(param);
 
     //   this.setState({
     //       first: startIndex,
