@@ -27,10 +27,11 @@ import {
 } from './selectors';
 import {
   actGetCarsList,
+  actClearCarsListStatus,
 } from './actions';
 
 export class Users extends React.Component { // eslint-disable-line react/prefer-stateless-function
-  
+
 
   constructor(props) {
     super(props);
@@ -47,39 +48,54 @@ export class Users extends React.Component { // eslint-disable-line react/prefer
     const param = {
       page: 1,
       pageSize: 10,
+      first: 0,
     };
+
+    this.setState({
+      loading: true,
+      first: 0,
+    });
     this.props.doGetCarsList(param);
   }
 
-  onPage(event) {
-    this.setState({
-        loading: true
-    });
+  componentDidUpdate() {
+    if (this.props.carsList && this.props.carsList.status) {
+      if (this.props.carsList.status >= 200 && this.props.carsList.status < 300 && this.state.loading) {
+        this.setState({
+          loading: false,
+        });
 
-    console.log('cek event :: ', event)
-
-    // //imitate delay of a backend call
-    // setTimeout(() => {
-    //   const startIndex = event.first;
-    //   const endIndex = event.first + this.state.rows;
-
-
-      const param = {
-        page: event.page + 1,
-        pageSize: 10,
-      };
-
-      this.props.doGetCarsList(param);
-
-    //   this.setState({
-    //       first: startIndex,
-    //       cars: this.datasource.slice(startIndex, endIndex),
-    //       loading: false
-    //   });
-    // }, 250);
+        // harus clear status di dalam carslist
+        this.props.doClearCarsListStatus();
+        
+      }
+    }
   }
-  
+
+  onPage(event) {
+    console.log('kepanggil ga si ??', event);
+
+
+    const param = {
+      page: event.page + 1,
+      pageSize: 10,
+    };
+
+    this.setState({
+      loading: true,
+      first: event.first,
+    });
+    this.props.doGetCarsList(param);
+  }
+
   render() {
+
+    console.log('cek :: ', this.state.loading);
+
+    let tableData = [];
+    if (this.props.carsList && this.props.carsList.data) {
+      tableData = this.props.carsList.data;
+    }
     return (
       <div>
         <Helmet>
@@ -89,8 +105,9 @@ export class Users extends React.Component { // eslint-disable-line react/prefer
         <FormattedMessage {...messages.header} />
         <div className="content-section implementation">
           <DataTable
-            value={this.props.carsList}
+            value={tableData}
             paginator
+            first={this.state.first}
             rows={10}
             rowsPerPageOptions={[5, 10, 20]}
             lazy
@@ -120,6 +137,7 @@ const mapStateToProps = createStructuredSelector({
 function mapDispatchToProps(dispatch) {
   return {
     doGetCarsList: (e) => dispatch(actGetCarsList(e)),
+    doClearCarsListStatus: (e) => dispatch(actClearCarsListStatus(e)),
   };
 }
 

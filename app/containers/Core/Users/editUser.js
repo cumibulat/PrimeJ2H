@@ -17,9 +17,9 @@ import injectReducer from 'utils/injectReducer';
 
 import { DataTable } from 'primereact/components/datatable/DataTable';
 import { Column } from 'primereact/components/column/Column';
-import {Button} from "primereact/components/button/Button";
-import {Dialog} from "primereact/components/dialog/Dialog";
-import {InputText} from "primereact/components/inputtext/InputText";
+import { Button } from 'primereact/components/button/Button';
+import { Dialog } from 'primereact/components/dialog/Dialog';
+import { InputText } from 'primereact/components/inputtext/InputText';
 
 import reducer from './reducer';
 import saga from './saga';
@@ -58,10 +58,10 @@ export class EditUsers extends React.Component { // eslint-disable-line react/pr
 
   onPage(event) {
     this.setState({
-        loading: true
+      loading: true,
     });
 
-    console.log('cek event :: ', event)
+    console.log('cek event :: ', event);
 
     // //imitate delay of a backend call
     // setTimeout(() => {
@@ -69,12 +69,12 @@ export class EditUsers extends React.Component { // eslint-disable-line react/pr
     //   const endIndex = event.first + this.state.rows;
 
 
-      const param = {
-        page: event.page + 1,
-        pageSize: 10,
-      };
+    const param = {
+      page: event.page + 1,
+      pageSize: 10,
+    };
 
-      this.props.doGetCarsList(param);
+    this.props.doGetCarsList(param);
 
     //   this.setState({
     //       first: startIndex,
@@ -84,27 +84,26 @@ export class EditUsers extends React.Component { // eslint-disable-line react/pr
     // }, 250);
   }
 
-  onCarSelect(e){
+  onCarSelect(e) {
     this.newCar = false;
     this.setState({
-        displayDialog:true,
-        car: Object.assign({}, e.data)
+      displayDialog: true,
+      car: Object.assign({}, e.data),
     });
   }
 
-  
+
   render() {
+    const header = <div className="ui-helper-clearfix" style={{ lineHeight: '1.87em' }}>CRUD for Cars </div>;
 
-    let header = <div className="ui-helper-clearfix" style={{lineHeight:'1.87em'}}>CRUD for Cars </div>;
+    const footer = (<div className="ui-helper-clearfix" style={{ width: '100%' }}>
+      <Button style={{ float: 'left' }} icon="fa fa-plus" label="Add" onClick={this.addNew} />
+    </div>);
 
-    let footer = <div className="ui-helper-clearfix" style={{width:'100%'}}>
-        <Button style={{float:'left'}} icon="fa fa-plus" label="Add" onClick={this.addNew}/>
-    </div>;
-
-    let dialogFooter = <div className="ui-dialog-buttonpane ui-helper-clearfix">
-        <Button icon="fa fa-close" label="Delete" onClick={this.delete}/>
-        <Button label="Save" icon="fa fa-check" onClick={this.save}/>
-    </div>;
+    const dialogFooter = (<div className="ui-dialog-buttonpane ui-helper-clearfix">
+      <Button icon="fa fa-close" label="Delete" onClick={this.delete} />
+      <Button label="Save" icon="fa fa-check" onClick={this.save} />
+    </div>);
 
 
     return (
@@ -116,49 +115,50 @@ export class EditUsers extends React.Component { // eslint-disable-line react/pr
         <FormattedMessage {...messages.header} />
         <div className="content-section implementation">
           <DataTable
-          value={this.props.carsList}
-            paginator={true}
+            value={this.props.carsList}
+            paginator
             rows={15}
             header={header}
             footer={footer}
             selectionMode="single"
             selection={this.state.selectedCar}
-            onSelectionChange={(e)=>{this.setState({selectedCar:e.data});}}
-            onRowSelect={this.onCarSelect}>
-                <Column field="vin" header="Vin" sortable={true} />
-                <Column field="year" header="Year" sortable={true} />
-                <Column field="brand" header="Brand" sortable={true} />
-                <Column field="color" header="Color" sortable={true} />
-            </DataTable>
+            onSelectionChange={(e) => { this.setState({ selectedCar: e.data }); }}
+            onRowSelect={this.onCarSelect}
+          >
+            <Column field="vin" header="Vin" sortable />
+            <Column field="year" header="Year" sortable />
+            <Column field="brand" header="Brand" sortable />
+            <Column field="color" header="Color" sortable />
+          </DataTable>
 
-            <Dialog visible={this.state.displayDialog} header="Car Details" modal={true} footer={dialogFooter} onHide={() => this.setState({displayDialog: false})}>
-                        {this.state.car && <div className="ui-grid ui-grid-responsive ui-fluid">
-                            <div className="ui-grid-row">
-                                <div className="ui-grid-col-4" style={{padding:'4px 10px'}}><label htmlFor="vin">Vin</label></div>
-                                <div className="ui-grid-col-8" style={{padding:'4px 10px'}}>
-                                    <InputText id="vin" onChange={(e) => {this.updateProperty('vin', e.target.value)}} value={this.state.car.vin}/>
-                                </div>
-                            </div>
-                            <div className="ui-grid-row">
-                                <div className="ui-grid-col-4" style={{padding:'4px 10px'}}><label htmlFor="year">Year</label></div>
-                                <div className="ui-grid-col-8" style={{padding:'4px 10px'}}>
-                                    <InputText id="year" onChange={(e) => {this.updateProperty('year', e.target.value)}} value={this.state.car.year}/>
-                                </div>
-                            </div>
-                            <div className="ui-grid-row">
-                                <div className="ui-grid-col-4" style={{padding:'4px 10px'}}><label htmlFor="brand">Brand</label></div>
-                                <div className="ui-grid-col-8" style={{padding:'4px 10px'}}>
-                                    <InputText id="brand" onChange={(e) => {this.updateProperty('brand', e.target.value)}} value={this.state.car.brand}/>
-                                </div>
-                            </div>
-                            <div className="ui-grid-row">
-                                <div className="ui-grid-col-4" style={{padding:'4px 10px'}}><label htmlFor="color">Color</label></div>
-                                <div className="ui-grid-col-8" style={{padding:'4px 10px'}}>
-                                    <InputText id="color" onChange={(e) => {this.updateProperty('color', e.target.value)}} value={this.state.car.color}/>
-                                </div>
-                            </div>
-                        </div>}
-                    </Dialog>
+          <Dialog visible={this.state.displayDialog} header="Car Details" modal footer={dialogFooter} onHide={() => this.setState({ displayDialog: false })}>
+            {this.state.car && <div className="ui-grid ui-grid-responsive ui-fluid">
+              <div className="ui-grid-row">
+                <div className="ui-grid-col-4" style={{ padding: '4px 10px' }}><label htmlFor="vin">Vin</label></div>
+                <div className="ui-grid-col-8" style={{ padding: '4px 10px' }}>
+                  <InputText id="vin" onChange={(e) => { this.updateProperty('vin', e.target.value); }} value={this.state.car.vin} />
+                </div>
+              </div>
+              <div className="ui-grid-row">
+                <div className="ui-grid-col-4" style={{ padding: '4px 10px' }}><label htmlFor="year">Year</label></div>
+                <div className="ui-grid-col-8" style={{ padding: '4px 10px' }}>
+                  <InputText id="year" onChange={(e) => { this.updateProperty('year', e.target.value); }} value={this.state.car.year} />
+                </div>
+              </div>
+              <div className="ui-grid-row">
+                <div className="ui-grid-col-4" style={{ padding: '4px 10px' }}><label htmlFor="brand">Brand</label></div>
+                <div className="ui-grid-col-8" style={{ padding: '4px 10px' }}>
+                  <InputText id="brand" onChange={(e) => { this.updateProperty('brand', e.target.value); }} value={this.state.car.brand} />
+                </div>
+              </div>
+              <div className="ui-grid-row">
+                <div className="ui-grid-col-4" style={{ padding: '4px 10px' }}><label htmlFor="color">Color</label></div>
+                <div className="ui-grid-col-8" style={{ padding: '4px 10px' }}>
+                  <InputText id="color" onChange={(e) => { this.updateProperty('color', e.target.value); }} value={this.state.car.color} />
+                </div>
+              </div>
+              </div>}
+          </Dialog>
         </div>
       </div>
     );

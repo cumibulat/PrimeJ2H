@@ -5,7 +5,8 @@ import {
   getCarsSmall,
   getCarsMedium,
   getCarsLarge,
-  CarService,
+  // CarService,
+  getPagingCarsLarge,
 } from 'containers/data/CarService';
 
 import {
@@ -15,7 +16,8 @@ import {
 
 
 export function* sagaGetCarsList(action) {
-  const cars = yield call(getCarsLarge, action);
+  // const cars = yield call(getCarsLarge, action);
+  const cars = yield call(getPagingCarsLarge, action);
   yield put({
     type: REDUCER_GET_CARS_LIST,
     payload: cars,
