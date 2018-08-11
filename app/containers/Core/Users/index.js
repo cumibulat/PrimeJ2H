@@ -115,10 +115,10 @@ export class Users extends React.Component { // eslint-disable-line react/prefer
             onPage={this.onPage}
             loading={this.state.loading}
           >
-            <Column field="vin" header="Vin" sortable />
-            <Column field="year" header="Year" sortable />
-            <Column field="brand" header="Brand" sortable />
-            <Column field="color" header="Color" sortable />
+            <Column field="vin" header="Vin" sortable filter/>
+            <Column field="year" header="Year" sortable filter/>
+            <Column field="brand" header="Brand" sortable filter/>
+            <Column field="color" header="Color" sortable filter/>
           </DataTable>
         </div>
       </div>
