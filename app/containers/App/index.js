@@ -17,10 +17,12 @@ import { Switch, Route } from 'react-router-dom';
 import 'primereact/resources/themes/start/theme.css';
 import 'primereact/resources/primereact.min.css';
 import 'primeicons/primeicons.css';
+import 'fullcalendar/dist/fullcalendar.css';
+import 'font-awesome/css/font-awesome.css';
 
 import HomePage from 'containers/HomePage/Loadable';
 import NotFoundPage from 'containers/NotFoundPage/Loadable';
-import { UserPage, EditUserPage }  from 'containers/Core/Users/Loadable';
+import { UserPage, EditUserPage } from 'containers/Core/Users/Loadable';
 
 export default function App() {
   return (
