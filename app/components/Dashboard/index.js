@@ -351,7 +351,6 @@ class Dashboard extends React.PureComponent {
                     width="35"
                     alt="avatar2"
                   />
-                  />
                   <span className="name">Jason Dourne</span>
                   <span className="email">jason@pf-sigma.com</span>
                 </a>
