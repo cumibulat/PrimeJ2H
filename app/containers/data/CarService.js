@@ -24,7 +24,7 @@ import axios from 'axios';
 
 export function getCarsSmall() {
   return new Promise((resolve) => {
-    axios.get('public/data/cars-small.json')
+    axios.get('data/cars-small.json')
     .then((res) => {
       resolve(res.data.data);
     });
@@ -32,12 +32,12 @@ export function getCarsSmall() {
 }
 
 export function getCarsMedium() {
-  return axios.get('public/data/cars-medium.json')
+  return axios.get('data/cars-medium.json')
               .then((res) => res.data.data);
 }
 
 export function getCarsLarge() {
-  return axios.get('public/data/cars-large.json')
+  return axios.get('data/cars-large.json')
               .then((res) => res.data.data);
 }
 
@@ -47,7 +47,7 @@ export function getPagingCarsLarge(param) {
 
   return new Promise((resolve) => {
     setTimeout(() => {
-      axios.get('public/data/cars-large.json')
+      axios.get('data/cars-large.json')
       .then((res) => {
         const xx = {
           data: res.data.data.slice((page * pageSize), ((page + 1) * pageSize)),
