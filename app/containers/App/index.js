@@ -20,6 +20,7 @@ import 'primereact/resources/primereact.min.css';
 import 'primeicons/primeicons.css';
 import 'fullcalendar/dist/fullcalendar.css';
 import 'font-awesome/css/font-awesome.css';
+import 'layout/layout.css';
 
 import HomePage from 'containers/HomePage/Loadable';
 import NotFoundPage from 'containers/NotFoundPage/Loadable';
@@ -28,13 +29,12 @@ import { UserPage, EditUserPage } from 'containers/Core/Users/Loadable';
 import classNames from 'classnames';
 import { ScrollPanel } from 'primereact/components/scrollpanel/ScrollPanel';
 
-
 import { AppTopbar } from './AppTopbar';
 import { AppFooter } from './AppFooter';
 import { AppMenu } from './AppMenu';
 import { AppInlineProfile } from './AppInlineProfile';
 import './App.css';
-import 'layout/layout.css';
+
 
 class App extends Component {
   constructor() {
