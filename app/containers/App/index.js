@@ -25,6 +25,7 @@ import 'layout/layout.css';
 import HomePage from 'containers/HomePage/Loadable';
 import NotFoundPage from 'containers/NotFoundPage/Loadable';
 import { UserPage, EditUserPage } from 'containers/Core/Users/Loadable';
+import { LoginPage } from 'containers/Core/Login/Loadable';
 
 import classNames from 'classnames';
 import { ScrollPanel } from 'primereact/components/scrollpanel/ScrollPanel';
@@ -34,7 +35,6 @@ import { AppFooter } from './AppFooter';
 import { AppMenu } from './AppMenu';
 import { AppInlineProfile } from './AppInlineProfile';
 import './App.css';
-
 
 class App extends Component {
   constructor() {
@@ -380,6 +380,7 @@ class App extends Component {
             <Route exact path="/" component={HomePage} />
             <Route exact path="/User" component={UserPage} />
             <Route exact path="/EditUser" component={EditUserPage} />
+            <Route exact path="/Login" component={LoginPage} />
             <Route component={NotFoundPage} />
           </Switch>
         </div>
