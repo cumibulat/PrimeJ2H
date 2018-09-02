@@ -114,7 +114,7 @@ class App extends Component {
         label: 'Dashboard',
         icon: 'fa fa-fw fa-home',
         command: () => {
-          window.location = '#/';
+          window.location = '/';
         },
       },
       {
@@ -155,67 +155,74 @@ class App extends Component {
         badge: '2',
         badgeStyleClass: 'teal-badge',
         items: [
+          // {
+          //   label: 'Sample Page',
+          //   icon: 'fa fa-fw fa-columns',
+          //   command: () => {
+          //     window.location = '#/sample';
+          //   },
+          // },
+          // {
+          //   label: 'Forms',
+          //   icon: 'fa fa-fw fa-code',
+          //   command: () => {
+          //     window.location = '#/forms';
+          //   },
+          // },
+          // {
+          //   label: 'Data',
+          //   icon: 'fa fa-fw fa-table',
+          //   command: () => {
+          //     window.location = '#/data';
+          //   },
+          // },
+          // {
+          //   label: 'Panels',
+          //   icon: 'fa fa-fw fa-list-alt',
+          //   command: () => {
+          //     window.location = '#/panels';
+          //   },
+          // },
+          // {
+          //   label: 'Overlays',
+          //   icon: 'fa fa-fw fa-square',
+          //   command: () => {
+          //     window.location = '#/overlays';
+          //   },
+          // },
+          // {
+          //   label: 'Menus',
+          //   icon: 'fa fa-fw fa-minus-square-o',
+          //   command: () => {
+          //     window.location = '#/menus';
+          //   },
+          // },
+          // {
+          //   label: 'Messages',
+          //   icon: 'fa fa-fw fa-circle-o-notch',
+          //   command: () => {
+          //     window.location = '#/messages';
+          //   },
+          // },
+          // {
+          //   label: 'Charts',
+          //   icon: 'fa fa-fw fa-area-chart',
+          //   command: () => {
+          //     window.location = '#/charts';
+          //   },
+          // },
+          // {
+          //   label: 'Misc',
+          //   icon: 'fa fa-fw fa-user-secret',
+          //   command: () => {
+          //     window.location = '#/misc';
+          //   },
+          // },
           {
-            label: 'Sample Page',
-            icon: 'fa fa-fw fa-columns',
-            command: () => {
-              window.location = '#/sample';
-            },
-          },
-          {
-            label: 'Forms',
-            icon: 'fa fa-fw fa-code',
-            command: () => {
-              window.location = '#/forms';
-            },
-          },
-          {
-            label: 'Data',
-            icon: 'fa fa-fw fa-table',
-            command: () => {
-              window.location = '#/data';
-            },
-          },
-          {
-            label: 'Panels',
-            icon: 'fa fa-fw fa-list-alt',
-            command: () => {
-              window.location = '#/panels';
-            },
-          },
-          {
-            label: 'Overlays',
-            icon: 'fa fa-fw fa-square',
-            command: () => {
-              window.location = '#/overlays';
-            },
-          },
-          {
-            label: 'Menus',
-            icon: 'fa fa-fw fa-minus-square-o',
-            command: () => {
-              window.location = '#/menus';
-            },
-          },
-          {
-            label: 'Messages',
-            icon: 'fa fa-fw fa-circle-o-notch',
-            command: () => {
-              window.location = '#/messages';
-            },
-          },
-          {
-            label: 'Charts',
-            icon: 'fa fa-fw fa-area-chart',
-            command: () => {
-              window.location = '#/charts';
-            },
-          },
-          {
-            label: 'Misc',
+            label: 'User',
             icon: 'fa fa-fw fa-user-secret',
             command: () => {
-              window.location = '#/misc';
+              window.location = '/User';
             },
           },
         ],
