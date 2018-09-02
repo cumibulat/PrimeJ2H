@@ -22,6 +22,7 @@ import 'fullcalendar/dist/fullcalendar.css';
 import 'font-awesome/css/font-awesome.css';
 import 'layout/layout.css';
 
+import Sigma from 'containers/Core/Sigma/Loadable';
 import HomePage from 'containers/HomePage/Loadable';
 import NotFoundPage from 'containers/NotFoundPage/Loadable';
 import { UserPage, EditUserPage } from 'containers/Core/Users/Loadable';
@@ -359,42 +360,16 @@ class App extends Component {
     });
 
     return (
-      <div className={wrapperClass} onClick={this.onWrapperClick}>
-        <AppTopbar onToggleMenu={this.onToggleMenu} />
-
-        <div
-          ref={el => (this.sidebar = el)}
-          className={sidebarClassName}
-          onClick={this.onSidebarClick}
-        >
-          <ScrollPanel
-            ref={el => (this.layoutMenuScroller = el)}
-            style={{ height: '100%' }}
-          >
-            <div className="layout-sidebar-scroll-content">
-              <div className="logo" />
-              <AppInlineProfile />
-              <AppMenu
-                model={this.menu}
-                onMenuItemClick={this.onMenuItemClick}
-              />
-            </div>
-          </ScrollPanel>
-        </div>
-
-        <div className="layout-main">
-          <Switch>
-            <Route exact path="/" component={HomePage} />
+      <div>
+        <Switch>
+          <Route path="/" component={Sigma}>
+            <Route exact path="/Home" component={HomePage} />
             <Route exact path="/User" component={UserPage} />
             <Route exact path="/EditUser" component={EditUserPage} />
-            <Route exact path="/Login" component={LoginPage} />
-            <Route component={NotFoundPage} />
-          </Switch>
-        </div>
-
-        <AppFooter />
-
-        <div className="layout-mask" />
+          </Route>
+          <Route exact path="/Login" component={LoginPage} />
+          <Route component={NotFoundPage} />
+        </Switch>
       </div>
     );
   }
