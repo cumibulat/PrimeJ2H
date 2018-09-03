@@ -361,15 +361,15 @@ class App extends Component {
 
     return (
       <div>
-        <Switch>
-          <Route path="/" component={Sigma}>
+        <Sigma>
+          <Switch>
             <Route exact path="/Home" component={HomePage} />
             <Route exact path="/User" component={UserPage} />
             <Route exact path="/EditUser" component={EditUserPage} />
-          </Route>
-          <Route exact path="/Login" component={LoginPage} />
-          <Route component={NotFoundPage} />
-        </Switch>
+            <Route exact path="/Login" component={LoginPage} />
+            <Route component={NotFoundPage} />
+          </Switch>
+        </Sigma>
       </div>
     );
   }
