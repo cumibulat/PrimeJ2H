@@ -26,7 +26,11 @@ import Sigma from 'containers/Core/Sigma/Loadable';
 import HomePage from 'containers/HomePage/Loadable';
 import NotFoundPage from 'containers/NotFoundPage/Loadable';
 import { UserPage, EditUserPage } from 'containers/Core/Users/Loadable';
-import { LoginPage } from 'containers/Core/Login/Loadable';
+import {
+  LoginPage,
+  ForgotPasswordPage,
+  FreeTrialPage,
+} from 'containers/Core/Login/Loadable';
 
 import classNames from 'classnames';
 import { ScrollPanel } from 'primereact/components/scrollpanel/ScrollPanel';
@@ -363,6 +367,9 @@ class App extends Component {
       <div>
         <Switch>
           <Route exact path="/Login" component={LoginPage} />
+          <Route exact path="/ForgotPassword" component={ForgotPasswordPage} />
+          <Route exact path="/ForgotPassword" component={ForgotPasswordPage} />
+          <Route exact path="/Trial" component={FreeTrialPage} />
           <Sigma>
             <Route exact path="/Home" component={HomePage} />
             <Route exact path="/User" component={UserPage} />

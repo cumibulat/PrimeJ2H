@@ -24,48 +24,29 @@ import saga from './saga';
 import messages from './messages';
 
 /* eslint-disable react/prefer-stateless-function */
-export class Login extends React.Component {
+export class ForgotPassword extends React.Component {
   render() {
     return (
       <div>
         <Helmet>
-          <title>Login</title>
-          <meta name="description" content="Description of Login" />
+          <title>Forgot Password</title>
+          <meta name="description" content="Description of Forgot Password" />
         </Helmet>
         <div className="ui-g ui-fluid">
           <div className="ui-g-12 ui-md-3 ui-lg-4" />
           <div className="ui-g-12 ui-md-6 ui-lg-4">
             {/* Left Side */}
             <div className="card card-w-title">
-              <h1>Login</h1>
+              <h1>Forgot Password</h1>
               <div className="ui-g form-group">
                 <div className="ui-g-12">
                   <InputText placeholder="name@company.com" />
                 </div>
-                <div className="ui-g-12">
-                  <Password placeholder="******" />
-                </div>
                 <div className="ui-g-12  ui-g-nopad">
                   <div className="ui-g-8" />
                   <div className="ui-g-4">
-                    <Button label="Log in" />
+                    <Button label="Reset Password" />
                   </div>
-                </div>
-                <div className="ui-g-12">
-                  <div className="ui-g-3" />
-                  <div className="ui-g-6">
-                    <a href="http://localhost:3000/forgotPassword">
-                      Forgot Password ?
-                    </a>
-                  </div>
-                  <div className="ui-g-3" />
-                </div>
-                <div className="ui-g-12">
-                  <div className="ui-g-3" />
-                  <div className="ui-g-6">
-                    <a href="http://localhost:3000/trial">Free Trial</a>
-                  </div>
-                  <div className="ui-g-3" />
                 </div>
               </div>
             </div>
@@ -77,7 +58,7 @@ export class Login extends React.Component {
   }
 }
 
-Login.propTypes = {
+ForgotPassword.propTypes = {
   dispatch: PropTypes.func.isRequired,
 };
 
@@ -103,4 +84,4 @@ export default compose(
   withReducer,
   withSaga,
   withConnect,
-)(Login);
+)(ForgotPassword);
